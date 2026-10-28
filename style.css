@@ -1,0 +1,306 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    min-height: 100vh;
+    padding: 3rem 1.25rem;
+    color: #18243a;
+    background:
+        radial-gradient(ellipse at 10% 0%, rgb(91 141 239 / 18%), transparent 34rem),
+        linear-gradient(145deg, #f3f7ff, #edf2fb 55%, #f7f9fd);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.calculator {
+    box-sizing: border-box;
+    width: min(100%, 38rem);
+    padding: clamp(1.25rem, 5vw, 2.25rem);
+    border: 1px solid rgb(255 255 255 / 85%);
+    border-radius: 1.25rem;
+    background: rgb(255 255 255 / 92%);
+    box-shadow: 0 1.25rem 3.5rem rgb(38 57 91 / 13%);
+    backdrop-filter: blur(12px);
+}
+
+h1 {
+    margin: 0 0 0.4rem;
+    text-align: center;
+    font-size: clamp(1.65rem, 5vw, 2.15rem);
+    letter-spacing: -0.04em;
+}
+
+.calculator > div:first-of-type {
+    display: flex;
+    justify-content: center;
+    gap: 0.65rem;
+    margin: 1.5rem 0 1.75rem;
+}
+
+.format-picker {
+    display: grid;
+    grid-template-columns: minmax(7rem, auto) minmax(0, 1fr);
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid #e3eaf5;
+    border-radius: 0.8rem;
+    background: #f7f9ff;
+}
+
+.INPUT {
+    display: grid;
+    grid-template-columns: minmax(7rem, auto) minmax(0, 1fr);
+    align-items: center;
+    gap: 0.85rem 1rem;
+}
+
+label {
+    color: #45536b;
+    font-size: 0.94rem;
+    font-weight: 600;
+}
+
+input,
+select {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: 0.75rem 0.85rem;
+    border: 1px solid #d5deeb;
+    border-radius: 0.65rem;
+    outline: none;
+    background: #fbfcff;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+    font: inherit;
+}
+
+select {
+    cursor: pointer;
+}
+
+input:focus,
+select:focus {
+    border-color: #557ee8;
+    box-shadow: 0 0 0 3px rgb(85 126 232 / 17%);
+}
+
+.button_send {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1.5rem;
+}
+
+button {
+    padding: 0.7rem 1rem;
+    border: 0;
+    border-radius: 0.65rem;
+    color: #fff;
+    background: linear-gradient(135deg, #416de0, #3156bc);
+    font: inherit;
+    font-weight: 650;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgb(49 86 188 / 16%);
+    transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    filter: brightness(1.06);
+    box-shadow: 0 7px 15px rgb(49 86 188 / 22%);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+button:focus-visible {
+    outline: 3px solid rgb(85 126 232 / 35%);
+    outline-offset: 3px;
+}
+
+.active {
+    background: linear-gradient(135deg, #233d83, #3156bc);
+}
+
+.hidden {
+    display: none;
+}
+
+#AND {
+    background: #587de3;
+}
+#OR {
+    background: green;
+}
+#XOR {
+    background: orange;
+}
+#LEFT {
+    background: palevioletred;
+}
+#RIGHT {
+    background: rgb(71, 182, 182);
+}
+#ALL-BINARY,
+#ALL-SHIFT {
+    background: rgb(176, 106, 219);
+}
+
+#RESET {
+    margin-top: 1.35rem;
+    background: #66748a;
+    box-shadow: none;
+}
+
+.results {
+    box-sizing: border-box;
+    width: min(100%, 38rem);
+    margin-top: 1.25rem;
+    overflow-wrap: anywhere;
+}
+
+.operation-result {
+    margin-bottom: 0.9rem;
+    padding: 1.15rem 1.25rem;
+    border: 1px solid #e0e7f1;
+    border-radius: 0.9rem;
+    background: #fff;
+    box-shadow: 0 8px 24px rgb(38 57 91 / 7%);
+}
+
+.operation-result h2 {
+    margin: 0 0 0.85rem;
+    color: #2f4d91;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+}
+
+.bit-calculation {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1rem;
+    overflow-x: auto;
+    border: 1px solid #e1e8f4;
+    border-radius: 0.7rem;
+    background: #fff;
+    color: #172c5d;
+    font-family: "Cascadia Code", Consolas, monospace;
+    font-size: 0.9rem;
+}
+
+.bit-row,
+.bit-operator-row {
+    display: grid;
+    gap: 0.35rem;
+    min-width: max-content;
+    align-items: center;
+}
+
+.bit-index-row {
+    margin-bottom: 0.45rem;
+    color: #708098;
+    font-size: 0.75rem;
+}
+
+.bit-row-label {
+    color: #526179;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 650;
+}
+
+.bit-cell {
+    display: grid;
+    min-width: 1.75rem;
+    height: 1.9rem;
+    box-sizing: border-box;
+    place-items: center;
+    border: 1px solid #d5deeb;
+    border-radius: 0.35rem;
+    background: #f3f6fb;
+    color: #61728a;
+    font-weight: 600;
+}
+
+.bit-index-row .bit-cell {
+    height: auto;
+    border: 0;
+    background: transparent;
+    color: #708098;
+    font-weight: 500;
+}
+
+.bit-cell.is-on {
+    border-color: #31a989;
+    background: #d7f5eb;
+    color: #12634f;
+    box-shadow: inset 0 0 0 1px rgb(49 169 137 / 16%);
+}
+
+.bit-index-row .bit-cell.is-on {
+    border: 0;
+    background: transparent;
+    color: #708098;
+    box-shadow: none;
+}
+
+.bit-operator-row {
+    margin-block: 0.4rem;
+}
+
+.bit-operator {
+    grid-column: 2 / -1;
+    color: #ffd166;
+    font-size: 1.05rem;
+    font-weight: 750;
+}
+
+.bit-divider {
+    width: 100%;
+    margin: 0.55rem 0;
+    border: 0;
+    border-top: 1px solid #9aaccb;
+}
+
+.integer-expression {
+    margin: 0.85rem 0 0;
+    color: #526179;
+    font-family: "Cascadia Code", Consolas, monospace;
+    font-size: 0.92rem;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 1.25rem 0.85rem;
+    }
+
+    .calculator {
+        border-radius: 1rem;
+    }
+
+    .calculator > div:first-of-type {
+        gap: 0.45rem;
+    }
+
+    .format-picker {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .calculator > div:first-of-type button {
+        flex: 1;
+        padding-inline: 0.55rem;
+        font-size: 0.88rem;
+    }
+
+    .button_send button {
+        flex: 1 1 42%;
+    }
+
+    .operation-result {
+        padding: 1rem;
+    }
+}

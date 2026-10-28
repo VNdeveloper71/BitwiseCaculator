@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitwise Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="calculator">
+        <h1>Bitwise Calculator</h1>
+        <div>
+            <button type="button" id="btn1" class="active">AND/OR/XOR</button>
+            <button type="button" id="btn2">Bit Shift/NOT</button>
+            <br><br>
+        </div>
+        <div class="format-picker">
+            <label for="id_data_type">Input format</label>
+            <select name="data_type" id="id_data_type">
+                <option value="2">Binary (Base-2)</option>
+                <option value="10">Decimal (Base-10)</option>
+            </select>
+        </div>
+        <section id="mode1">
+            <div class="INPUT">
+                <label for="number-a">First Number (A):</label>
+                <input id="number-a" type="text" inputmode="numeric" autocomplete="off">
+                <label for="number-b">Second Number (B):</label>
+                <input id="number-b" type="text" inputmode="numeric" autocomplete="off">
+            </div>
+            <div class="button_send">
+                <button type="button" id="AND">&amp; AND</button>
+                <button type="button" id="OR">| OR</button>
+                <button type="button" id="XOR">^ XOR</button>
+
+                <button type="button" id="ALL-BINARY">Calculate All</button>
+            </div>
+        </section>
+
+        <section id="mode2" class="hidden">
+            <div class="INPUT">
+                <label for="shift-a">Number:</label>
+                <input id="shift-a" type="text" inputmode="numeric" autocomplete="off">
+                <label for="shift-count">Shift amount (0-31):</label>
+                <input id="shift-count" type="number" min="0" max="31" step="1" inputmode="numeric">
+            </div>
+            <div class="button_send">
+                <button type="button" id="LEFT">&lt;&lt; Shift Left</button>
+                <button type="button" id="RIGHT">&gt;&gt; Shift Right</button>
+                <button type="button" id="NOT">~ NOT</button>
+                <button type="button" id="ALL-SHIFT">Calculate All</button>
+            </div>
+        </section>
+
+        <button type="button" id="RESET">Reset</button>
+    </main>
+    <section id="result" class="results" aria-live="polite">
+        <p>Nhập số nguyên rồi chọn phép toán.</p>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
